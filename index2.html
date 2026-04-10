@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Klar</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+body{
+  margin:0;
+  font-family:'Inter', -apple-system;
+  background:#031423;
+  color:white;
+  overflow:hidden;
+}
+
+/* GRÖN DEL */
+.top{
+  position:relative;
+  height:58vh;
+  background:linear-gradient(135deg,#7ed321,#4fa52c);
+  border-bottom-left-radius:50% 18%;
+  border-bottom-right-radius:50% 18%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+
+/* CHECK SVG */
+.check{
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  border:3px solid rgba(255,255,255,0.4);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:15px;
+}
+
+.check svg{
+  width:40px;
+  height:40px;
+  stroke:white;
+  stroke-width:3;
+  fill:none;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+/* TEXT */
+.success{
+  font-size:26px;
+  font-weight:500;
+}
+
+/* INFO */
+.content{
+  text-align:center;
+  margin-top:20px;
+}
+
+.date{
+  opacity:.6;
+  font-size:15px;
+  margin-bottom:10px;
+}
+
+.name{
+  font-size:26px;
+}
+
+.number{
+  opacity:.7;
+  margin-top:6px;
+}
+
+.amount{
+  font-size:64px;
+  margin-top:20px;
+}
+
+/* LOGO */
+.logo{
+  position:absolute;
+  bottom:40px;
+  width:100%;
+  text-align:center;
+}
+
+/* CLOSE BUTTON */
+.close{
+  position:absolute;
+  right:20px;
+  bottom:30px;
+  width:64px;
+  height:64px;
+  border-radius:50%;
+  background:#10263d;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+}
+
+/* BUBBLES */
+.bubble{
+  position:absolute;
+  width:6px;
+  height:6px;
+  background:rgba(255,255,255,0.8);
+  border-radius:50%;
+  opacity:0;
+  animation:float 6s linear infinite;
+}
+
+@keyframes float{
+  0%{
+    transform:translateY(40px);
+    opacity:0;
+  }
+  20%{opacity:1;}
+  100%{
+    transform:translateY(-200px);
+    opacity:0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="top" id="top">
+
+  <div class="check">
+    <svg viewBox="0 0 24 24">
+      <path d="M5 13l4 4L19 7"></path>
+    </svg>
+  </div>
+
+  <div class="success">Din betalning är skickad!</div>
+
+</div>
+
+<div class="content">
+  <div class="date" id="date"></div>
+  <div class="name" id="name"></div>
+  <div class="number" id="number"></div>
+  <div class="amount" id="amount"></div>
+</div>
+
+<div class="logo">
+  <img src="swisher2.png" width="120">
+</div>
+
+<div class="close" onclick="back()">✕</div>
+
+<script>
+// DATA
+document.getElementById('name').innerText = localStorage.getItem('name');
+document.getElementById('number').innerText = localStorage.getItem('number');
+document.getElementById('amount').innerText = localStorage.getItem('amount') + " kr";
+document.getElementById('date').innerText = localStorage.getItem('date');
+
+// BACK
+function back(){
+  window.location.href = "index.html";
+}
+
+// BUBBLES AFTER 1s
+setTimeout(() => {
+  const top = document.getElementById('top');
+
+  for(let i=0;i<15;i++){
+    const b = document.createElement('div');
+    b.className = 'bubble';
+    b.style.left = Math.random()*100 + '%';
+    b.style.animationDelay = Math.random()*5 + 's';
+    top.appendChild(b);
+  }
+}, 1000);
+</script>
+
+</body>
+</html>
