@@ -70,15 +70,15 @@ canvas{
 
 .check path{
   stroke:white;
-  stroke-width:2.8;
+  stroke-width:2.4;
   fill:none;
   stroke-linecap:round;
   stroke-linejoin:round;
-  stroke-dasharray:48;
-  stroke-dashoffset:48;
-  animation:draw .5s ease forwards;
-}
 
+  stroke-dasharray:30;
+  stroke-dashoffset:30;
+  animation:draw 0.45s ease-out forwards;
+}
 @keyframes draw{
   to{stroke-dashoffset:0;}
 }
@@ -146,11 +146,10 @@ canvas{
   <canvas id="canvas"></canvas>
 
   <div class="circle">
-    <svg class="check" viewBox="0 0 24 24">
-      <!-- MER EXAKT FORM -->
-      <path d="M6 13.5 L10.2 17.2 L18 8"></path>
-    </svg>
-  </div>
+  <svg class="check" viewBox="0 0 24 24">
+    <path d="M7.2 12.8 L10.4 16 L17.8 8.6"></path>
+  </svg>
+</div>
 
   <div class="success">Din betalning är skickad!</div>
 </div>
